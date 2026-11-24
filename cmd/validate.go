@@ -12,7 +12,12 @@ func newValidateCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "validate [input]",
 		Short: "Validate an OpenAPI JSON or YAML specification",
-		Args:  cobra.MaximumNArgs(1),
+		Example: `  # Validate an OpenAPI specification file
+  openapi2md validate openapi.yaml
+
+  # Validate an OpenAPI specification from standard input
+  cat openapi.json | openapi2md validate`,
+		Args: cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			data, err := readInput(cmd, args)
 			if err != nil {

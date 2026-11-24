@@ -109,3 +109,45 @@ func TestCLIErrorsOnInvalidSpec(t *testing.T) {
 		t.Fatalf("expected info.title error, got %v", err)
 	}
 }
+
+func TestCLIHelpIncludesExamples(t *testing.T) {
+	var out bytes.Buffer
+	root := NewRootCmd()
+	root.SetOut(&out)
+	root.SetArgs([]string{"--help"})
+	if err := root.Execute(); err != nil {
+		t.Fatalf("--help failed: %v", err)
+	}
+
+	got := out.String()
+	for _, want := range []string{
+		"Examples:",
+		"openapi2md openapi.yaml",
+		"openapi2md openapi.json --toc -o docs/API.md",
+		"openapi2md - < openapi.json",
+		"openapi2md validate openapi.yaml",
+	} {
+		if !strings.Contains(got, want) {
+			t.Errorf("root help output missing %q:\n%s", want, got)
+		}
+	}
+
+	out.Reset()
+	root = NewRootCmd()
+	root.SetOut(&out)
+	root.SetArgs([]string{"validate", "--help"})
+	if err := root.Execute(); err != nil {
+		t.Fatalf("validate --help failed: %v", err)
+	}
+
+	got = out.String()
+	for _, want := range []string{
+		"Examples:",
+		"openapi2md validate openapi.yaml",
+		"cat openapi.json | openapi2md validate",
+	} {
+		if !strings.Contains(got, want) {
+			t.Errorf("validate help output missing %q:\n%s", want, got)
+		}
+	}
+}

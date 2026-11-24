@@ -29,6 +29,18 @@ into clean, deterministic GitHub-flavored Markdown documentation.
 
 Pass a file path as [input], or use "-" (or omit the argument when piping)
 to read the OpenAPI specification from standard input.`,
+		Example: `  # Convert an OpenAPI file to Markdown on stdout
+  openapi2md openapi.yaml
+
+  # Write Markdown documentation to a file with a Table of Contents
+  openapi2md openapi.json --toc -o docs/API.md
+
+  # Read an OpenAPI specification from standard input
+  cat openapi.yaml | openapi2md -o docs/API.md
+  openapi2md - < openapi.json
+
+  # Validate an OpenAPI specification without generating Markdown
+  openapi2md validate openapi.yaml`,
 		Args:          cobra.MaximumNArgs(1),
 		SilenceUsage:  true,
 		SilenceErrors: true,
