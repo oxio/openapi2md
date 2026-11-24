@@ -4,13 +4,100 @@ CLI tool for converting OpenAPI 3.0 and 3.1 JSON/YAML specifications into clean,
 
 ## Installation
 
-```sh
+### Quick Install (Recommended)
+
+One-liner that auto-detects your OS and architecture:
+
+#### Using curl
+
+Latest version:
+
+```bash
+curl -sL https://raw.githubusercontent.com/oxio/openapi2md/main/install.sh | bash
+```
+
+Specific version:
+
+```bash
+curl -sL https://raw.githubusercontent.com/oxio/openapi2md/main/install.sh | bash -s -- v1.0.1
+```
+
+#### Using wget
+
+Latest version:
+
+```bash
+wget -qO- https://raw.githubusercontent.com/oxio/openapi2md/main/install.sh | bash
+```
+
+Specific version:
+
+```bash
+wget -qO- https://raw.githubusercontent.com/oxio/openapi2md/main/install.sh | bash -s -- v1.0.1
+```
+
+### Go Install
+
+If you have Go installed:
+
+Latest version:
+
+```bash
 go install github.com/oxio/openapi2md@latest
 ```
 
-Or build from source:
+Specific version:
 
-```sh
+```bash
+go install github.com/oxio/openapi2md@v1.0.1
+```
+
+### Manual Download
+
+Download the appropriate binary for your platform from the [latest release](https://github.com/oxio/openapi2md/releases/latest) (or a specific tag on [GitHub Releases](https://github.com/oxio/openapi2md/releases)).
+
+#### Linux
+
+```bash
+# amd64 (x86_64)
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-linux-amd64 -o openapi2md && chmod +x openapi2md && sudo mv openapi2md /usr/local/bin/
+
+# arm64 (aarch64)
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-linux-arm64 -o openapi2md && chmod +x openapi2md && sudo mv openapi2md /usr/local/bin/
+
+# arm (32-bit, armv7)
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-linux-arm -o openapi2md && chmod +x openapi2md && sudo mv openapi2md /usr/local/bin/
+```
+
+#### macOS
+
+```bash
+# Apple Silicon (M1/M2/M3/M4/M5)
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-darwin-arm64 -o openapi2md && chmod +x openapi2md && sudo mv openapi2md /usr/local/bin/
+
+# Intel (x86_64)
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-darwin-amd64 -o openapi2md && chmod +x openapi2md && sudo mv openapi2md /usr/local/bin/
+```
+
+#### Windows
+
+```powershell
+# amd64 (x86_64)
+Invoke-WebRequest -Uri "https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-windows-amd64.exe" -OutFile "openapi2md.exe"
+
+# arm64
+Invoke-WebRequest -Uri "https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-windows-arm64.exe" -OutFile "openapi2md.exe"
+```
+
+Or using PowerShell with `curl` alias:
+
+```powershell
+curl -sL https://github.com/oxio/openapi2md/releases/latest/download/openapi2md-windows-amd64.exe -o openapi2md.exe
+```
+
+### Build from Source
+
+```bash
 go build -o openapi2md .
 ```
 
