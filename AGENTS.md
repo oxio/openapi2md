@@ -3,6 +3,10 @@
 ## Git Workflow
 - Always stage (`git add`) any files that you create, modify, or delete.
 
+## Versions, tags, releases
+
+- For requests about versions, tags, or releases, use the skill at `.agents/skills/versioning/SKILL.md`.
+
 ## Build & Task Runner
 - Use `Taskfile` (`Taskfile.yml` / `task`) rather than `Makefile` (`make`).
 
